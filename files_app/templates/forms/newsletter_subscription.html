@@ -1,0 +1,62 @@
+{% extends "home/index.html" %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <h2>Newsletter Subscription Form</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_email">Email:</label>
+                <input type="email" class="form-control" id="id_email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="id_first_name">First Name:</label>
+                <input type="text" class="form-control" id="id_first_name" name="first_name">
+            </div>
+            <div class="form-group">
+                <label for="id_last_name">Last Name:</label>
+                <input type="text" class="form-control" id="id_last_name" name="last_name">
+            </div>
+            <div class="form-group">
+                <label for="id_gender">Gender:</label>
+                <select class="form-control" id="id_gender" name="gender">
+                    <option value="">---------</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="id_age">Age:</label>
+                <input type="number" class="form-control" id="id_age" name="age" min="0" max="150">
+            </div>
+            <div class="form-group">
+                <label for="id_city">City:</label>
+                <input type="text" class="form-control" id="id_city" name="city">
+            </div>
+            <div class="form-group">
+                <label for="id_country">Country:</label>
+                <input type="text" class="form-control" id="id_country" name="country">
+            </div>
+            <div class="form-group">
+                <label for="id_interests">Interests:</label>
+                <textarea class="form-control" id="id_interests" name="interests" rows="3"></textarea>
+                <small id="id_interests_help" class="form-text text-muted">Enter your interests separated by commas.</small>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="id_receive_promotions" name="receive_promotions" checked>
+                <label class="form-check-label" for="id_receive_promotions">Receive Promotions</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="id_receive_news" name="receive_news" checked>
+                <label class="form-check-label" for="id_receive_news">Receive News</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="id_terms_and_conditions" name="terms_and_conditions" required>
+                <label class="form-check-label" for="id_terms_and_conditions">I agree to the Terms and Conditions</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+{% endblock %}

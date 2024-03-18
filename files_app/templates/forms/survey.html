@@ -1,0 +1,79 @@
+{% extends "home/index.html" %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <h2>Survey Form</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_name">Your Name:</label>
+                <input type="text" class="form-control" id="id_name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="id_email">Your Email:</label>
+                <input type="email" class="form-control" id="id_email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="id_age">Your Age:</label>
+                <input type="number" class="form-control" id="id_age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="id_gender">Your Gender:</label>
+                <select class="form-control" id="id_gender" name="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="id_education_level">Your Education Level:</label>
+                <select class="form-control" id="id_education_level" name="education_level" required>
+                    <option value="high_school">High School</option>
+                    <option value="college">College</option>
+                    <option value="graduate_school">Graduate School</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="id_occupation">Your Occupation:</label>
+                <input type="text" class="form-control" id="id_occupation" name="occupation" required>
+            </div>
+            <div class="form-group">
+                <label for="id_country">Your Country:</label>
+                <input type="text" class="form-control" id="id_country" name="country" required>
+            </div>
+            <div class="form-group">
+                <label for="id_satisfaction_rating">Overall Satisfaction Rating:</label>
+                <select class="form-control" id="id_satisfaction_rating" name="satisfaction_rating" required>
+                    <option value="1">1 - Very Dissatisfied</option>
+                    <option value="2">2 - Dissatisfied</option>
+                    <option value="3">3 - Neutral</option>
+                    <option value="4">4 - Satisfied</option>
+                    <option value="5">5 - Very Satisfied</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="id_favorite_feature">Your Favorite Feature:</label>
+                <input type="text" class="form-control" id="id_favorite_feature" name="favorite_feature" required>
+            </div>
+            <div class="form-group">
+                <label for="id_improvement_suggestions">Improvement Suggestions:</label>
+                <textarea class="form-control" id="id_improvement_suggestions" name="improvement_suggestions" rows="3"></textarea>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="id_interested_in_future_updates" name="interested_in_future_updates">
+                <label class="form-check-label" for="id_interested_in_future_updates">Interested in Future Updates</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="id_would_recommend" name="would_recommend">
+                <label class="form-check-label" for="id_would_recommend">Would Recommend</label>
+            </div>
+            <div class="form-group">
+                <label for="id_additional_comments">Additional Comments:</label>
+                <textarea class="form-control" id="id_additional_comments" name="additional_comments" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+{% endblock %}

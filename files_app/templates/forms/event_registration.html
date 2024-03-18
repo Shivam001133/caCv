@@ -1,0 +1,56 @@
+{% extends "home/index.html" %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <h2>Event Registration Form</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_full_name">Full Name:</label>
+                <input type="text" class="form-control" id="id_full_name" name="full_name" required>
+            </div>
+            <div class="form-group">
+                <label for="id_email">Email:</label>
+                <input type="email" class="form-control" id="id_email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="id_phone_number">Phone Number:</label>
+                <input type="text" class="form-control" id="id_phone_number" name="phone_number" required>
+            </div>
+            <div class="form-group">
+                <label for="id_event_name">Event Name:</label>
+                <input type="text" class="form-control" id="id_event_name" name="event_name" required>
+            </div>
+            <div class="form-group">
+                <label for="id_event_date">Event Date:</label>
+                <input type="date" class="form-control" id="id_event_date" name="event_date" required>
+            </div>
+            <div class="form-group">
+                <label for="id_dietary_restrictions">Dietary Restrictions:</label>
+                <textarea class="form-control" id="id_dietary_restrictions" name="dietary_restrictions" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="id_additional_guests">Number of Additional Guests:</label>
+                <input type="number" class="form-control" id="id_additional_guests" name="additional_guests" min="0" value="0">
+            </div>
+            <div class="form-group">
+                <label for="id_emergency_contact_name">Emergency Contact Name:</label>
+                <input type="text" class="form-control" id="id_emergency_contact_name" name="emergency_contact_name">
+            </div>
+            <div class="form-group">
+                <label for="id_emergency_contact_phone">Emergency Contact Phone:</label>
+                <input type="text" class="form-control" id="id_emergency_contact_phone" name="emergency_contact_phone">
+            </div>
+            <div class="form-group">
+                <label for="id_special_requests">Special Requests:</label>
+                <textarea class="form-control" id="id_special_requests" name="special_requests" rows="3"></textarea>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="id_agree_to_terms" name="agree_to_terms" required>
+                <label class="form-check-label" for="id_agree_to_terms">I agree to the terms and conditions</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+{% endblock %}
