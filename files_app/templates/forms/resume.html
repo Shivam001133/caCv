@@ -25,7 +25,8 @@
 {% endblock %}
 {% block content %}
 <div class="container mt-5">
-  <form method="post" enctype="multipart/form-data" action="{% url 'files_app:resume' %}"  >
+  <form method="post" enctype="multipart/form-data" action="{% url 'files_app:resume' %}" id="resumeForm">
+
     {% csrf_token %}
     <div class="form-group">
         <label for="image">Image</label>
@@ -88,17 +89,35 @@
 
 {% block script %}
 <script>
-    function previewImage(event) {
-      var input = event.target;
-      var reader = new FileReader();
-  
-      reader.onload = function() {
-        var preview = document.getElementById('image-preview');
-        preview.src = reader.result;
-        preview.classList.remove('d-none');
-      }
-  
-      reader.readAsDataURL(input.files[0]);
-    }
+  document.addEventListener('DOMContentLoaded', function() {
+      // Script to handle resume form submission
+      document.getElementById('resumeForm').addEventListener('submit', function(event) {
+          event.preventDefault(); // Prevent default form submission
+          
+          console.log('Form submitted'); // Check if form submission is triggered
+          
+          // Here you can perform any necessary form validation before submission
+          
+          // Submit the form using AJAX
+          var formData = new FormData(this);
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', this.action, true);
+          xhr.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
+          xhr.onreadystatechange = function() {
+              if (xhr.readyState === 4) {
+                  console.log('Server response:', xhr.status, xhr.responseText); // Check server response
+                  if (xhr.status === 200) {
+                      // Resume form submitted successfully, now update the navbar
+                      var selectedOption = document.getElementById('selectedOption');
+                      selectedOption.innerText = 'File Format'; // Reset to default text
+                      document.getElementById('selectedOptionInput').value = ''; // Reset selected value
+                  }
+              }
+          };
+          xhr.send(formData);
+      });
+  });
 </script>
+
+
 {% endblock %}

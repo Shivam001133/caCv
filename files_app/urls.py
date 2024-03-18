@@ -9,6 +9,7 @@ from .views import (
     event_registration_view,
     product_order_view,
     newsletter_subscription_view,
+    custum_view,
     )
 
 app_name = 'files_app'
@@ -26,4 +27,6 @@ urlpatterns = [
     path('product-order/', product_order_view, name='product_order'),
     path('newsletter-subscription/', newsletter_subscription_view,
          name='newsletter_subscription'),
+    path('custum/', custum_view,
+         name='custum'),
 ]

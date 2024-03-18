@@ -28,7 +28,7 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Custum <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'files_app:custum' %}">Custum <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'files_app:resume' %}">Resume</a>
@@ -64,6 +64,21 @@
           <a class="dropdown-item" href="#">something </a>
         </div>
       </li>
+      <form method="post" action="{% url 'files_app:home' %}">
+        {% csrf_token %}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span id="selectedOption">File Format</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#" data-value="Pdf">PDF</a>
+                <a class="dropdown-item" href="#" data-value="Word">WORD</a>
+                <a class="dropdown-item" href="#" data-value="Img">Image</a>
+                <a class="dropdown-item" href="#" data-value="Text">Text</a>
+            </div>
+        </li>
+    </form>
+    
     </ul>
   </div>
 </nav>
@@ -75,6 +90,32 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  // Script to handle dropdown item clicks
+  document.querySelectorAll('.dropdown-item').forEach(item => {
+      item.addEventListener('click', event => {
+          document.getElementById('selectedOption').innerText = item.innerText;
+          document.getElementById('selectedOptionInput').value = item.getAttribute('data-value');
+      });
+  });
+
+  // Script to save data from both forms
+  function saveData() {
+      // Get input values from both forms
+      var navInputValue = document.getElementById('navForm').elements.navInput.value;
+      var mainInputValue = document.getElementById('mainForm').elements.mainInput.value;
+
+      // Combine data from both forms however you want
+      var combinedData = "Nav Form Data: " + navInputValue + ", Main Form Data: " + mainInputValue;
+
+      // For demonstration purposes, you can just log the combined data
+      console.log(combinedData);
+
+      // Here you would typically send the combined data to your server using AJAX or some other method
+  }
+</script>
+
+
 {% block script %}
 {% endblock %}  
 

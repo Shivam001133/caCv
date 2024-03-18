@@ -9,6 +9,16 @@ class GenderChoise(forms.ChoiceField):
     OTHER = 'other', _('Other')
 
 
+class FormatForm(forms.Form):
+    class FileFormat(forms.ChoiceField):
+        PDF = 'Pdf', _("PDF")
+        word = 'Word', _("WORD")
+        img = 'Img', _('IMAGES')
+        text = 'Text', _('TEXT')
+    file_format = forms.ChoiceField(
+        choices=FileFormat.choices, label='File Formet')
+
+
 class ResumeForm(forms.Form):
     image = forms.ImageField(label='Image', required=False)
     first_name = forms.CharField(max_length=100, label='First Name')
