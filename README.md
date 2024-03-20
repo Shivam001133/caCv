@@ -39,4 +39,4 @@ To install the project dependencies and set up the environment, follow these ste
 Contributions to this project are welcome! If you have any suggestions, bug reports, or feature requests, please feel free to open an issue or submit a pull request. Together, we can improve and enhance the functionality of this input data converter.
 
 ## License
-This project is licensed under the [MIT License](LICENSE), allowing for free distribution, modification, and use in both commercial and non-commercial settings. See the LICENSE file for more details.
+This project is licensed under the [Apache License](LICENSE), allowing for free distribution, modification, and use in both commercial and non-commercial settings. See the LICENSE file for more details.
